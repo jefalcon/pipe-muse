@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="description" content="pipe-muse — homenaje no oficial a Pipe Mania (1989). Clon original para navegador." />
+    <title>pipe-muse — homenaje a Pipe Mania</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1524'/%3E%3Cpath d='M4 13h24v6H4z' fill='%23b9c5d8'/%3E%3Cpath d='M4 14.5h24v3H4z' fill='%232fd465'/%3E%3Crect x='13' y='6' width='6' height='20' fill='%23d8a53c'/%3E%3C/svg%3E" />
+    <style>
+      html, body {
+        margin: 0; padding: 0; height: 100%;
+        background: radial-gradient(120% 120% at 50% 20%, #16233a 0%, #070c15 70%);
+        color: #e8e8e8;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        touch-action: manipulation;
+        overscroll-behavior: none;
+      }
+      #wrap {
+        position: fixed; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+      }
+      #stage { position: relative; }
+      canvas {
+        display: block;
+        background: #101623;
+        border-radius: 6px;
+        box-shadow: 0 0 0 2px #000, 0 0 0 4px #2c3a55, 0 18px 60px rgba(0,0,0,.7);
+      }
+      #hint {
+        position: absolute; left: 0; right: 0; bottom: -24px;
+        text-align: center; font-size: 12px; color: #8a93a6;
+        user-select: none; white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="stage">
+        <canvas id="game" width="960" height="600"></canvas>
+        <div id="hint"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
