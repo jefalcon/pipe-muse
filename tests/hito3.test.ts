@@ -92,7 +92,7 @@ describe('Hito 3: niveles avanzados', () => {
 });
 
 describe('Hito 3: flujo avanzado', () => {
-  it('wrap: el flooz cruza al lado opuesto', () => {
+  it('wrap: el flujo cruza al lado opuesto', () => {
     const b = createBoard(10, 7, 9, 3, 'right');
     placePiece(b, 0, 3, { kind: 'straight-h' });
     placePiece(b, 1, 3, { kind: 'straight-h' });

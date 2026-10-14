@@ -168,8 +168,8 @@ function drawHUD(g: Game, ctx: CanvasRenderingContext2D): void {
   const wf = Math.round(200 * Math.min(1, Math.max(0, frac)));
   if (wf > 0) {
     const fg = ctx.createLinearGradient(0, 40, 0, 54);
-    fg.addColorStop(0, COLORS.floozHi);
-    fg.addColorStop(1, COLORS.floozDark);
+    fg.addColorStop(0, COLORS.flujoHi);
+    fg.addColorStop(1, COLORS.flujoDark);
     ctx.fillStyle = fg;
     rr(ctx, 420, 40, wf, 14, 7);
     ctx.fill();
@@ -196,15 +196,15 @@ function drawHUD(g: Game, ctx: CanvasRenderingContext2D): void {
     ctx.fillStyle = COLORS.dim;
     ctx.font = `600 12px ${FONT_UI}`;
     ctx.fillText(g.fast ? t('fast') : 'FLOW', 662, 32);
-    ctx.fillStyle = g.fast ? COLORS.danger : COLORS.flooz;
+    ctx.fillStyle = g.fast ? COLORS.danger : COLORS.flujo;
     ctx.font = `700 26px ${FONT_NUM}`;
     ctx.fillText(g.fast ? 'x2' : `${g.flow.speed.toFixed(1)}/s`, 662, 62);
     ctx.fillStyle = '#0a0f1a';
     rr(ctx, 786, 40, 144, 14, 7);
     ctx.fill();
     const fg = ctx.createLinearGradient(0, 40, 0, 54);
-    fg.addColorStop(0, COLORS.floozHi);
-    fg.addColorStop(1, COLORS.floozDark);
+    fg.addColorStop(0, COLORS.flujoHi);
+    fg.addColorStop(1, COLORS.flujoDark);
     ctx.fillStyle = fg;
     rr(ctx, 786, 40, Math.round(144 * Math.min(1, g.flow.progress)), 14, 7);
     ctx.fill();
@@ -366,7 +366,7 @@ function drawSpill(g: Game, ctx: CanvasRenderingContext2D, timeMs: number): void
   const t = (timeMs / 1000) % 1.2;
   // Chorro.
   const grad = ctx.createLinearGradient(sx, sy, sx + dx * 64, sy + dy * 64);
-  grad.addColorStop(0, COLORS.flooz);
+  grad.addColorStop(0, COLORS.flujo);
   grad.addColorStop(1, 'rgba(47,212,101,0)');
   ctx.strokeStyle = grad;
   ctx.lineWidth = 14;
@@ -381,7 +381,7 @@ function drawSpill(g: Game, ctx: CanvasRenderingContext2D, timeMs: number): void
     const spread = (i - 3) * 7;
     const gx = sx + dx * (30 + ph * 46) + (dy !== 0 ? spread * ph : 0);
     const gy = sy + dy * (30 + ph * 46) + (dx !== 0 ? spread * ph : 0) + ph * ph * 22;
-    ctx.fillStyle = i % 2 ? COLORS.flooz : COLORS.floozHi;
+    ctx.fillStyle = i % 2 ? COLORS.flujo : COLORS.flujoHi;
     ctx.beginPath();
     ctx.arc(gx, gy, 5 - ph * 2.5, 0, Math.PI * 2);
     ctx.fill();
@@ -650,8 +650,8 @@ function drawTitle(ctx: CanvasRenderingContext2D, timeMs: number): void {
   ctx.moveTo(80, y);
   ctx.lineTo(880, y);
   ctx.stroke();
-  // Flooz animado con dashes.
-  ctx.strokeStyle = COLORS.flooz;
+  // Flujo animado con dashes.
+  ctx.strokeStyle = COLORS.flujo;
   ctx.lineWidth = 16;
   ctx.setLineDash([46, 30]);
   ctx.lineDashOffset = -(timeMs / 18);

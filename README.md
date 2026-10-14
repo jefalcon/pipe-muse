@@ -20,7 +20,7 @@ grafismo, sonido y código originales, con estética HD propia.
 ### Cómo jugar
 
 Construye una tubería desde la válvula de salida antes de que llegue el
-*flooz* y recorre la distancia mínima sin derrames.
+*flujo* y recorre la distancia mínima sin derrames.
 
 - **Colocar:** clic/toque o flechas + Espacio/Enter. Siempre se coloca la
   pieza inferior del dispensador.
@@ -60,7 +60,7 @@ graphics, sound and code, with its own HD look.
 
 ### How to play
 
-Build a pipeline from the start valve before the *flooz* arrives, and cover
+Build a pipeline from the start valve before the *flujo* arrives, and cover
 the minimum distance without spilling.
 
 - **Place:** click/tap or arrows + Space/Enter. The bottom dispenser piece is

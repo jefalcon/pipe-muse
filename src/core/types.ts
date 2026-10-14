@@ -42,7 +42,7 @@ export interface Cell {
   filled: boolean;
   /** 0..1 llenado progresivo (la actual en curso tiene 0<fill<1). */
   fill: number;
-  /** Veces que el flooz entró (cruces: bonus al pasar 2 veces, Hito 2). */
+  /** Veces que el flujo entró (cruces: bonus al pasar 2 veces, Hito 2). */
   passCount: number;
 }
 
@@ -63,10 +63,10 @@ export interface FlowState {
   phase: FlowPhase;
   /** Tiempo restante de cuenta atrás (s). */
   countdown: number;
-  /** Casilla actual del frente de flooz. */
+  /** Casilla actual del frente de flujo. */
   x: number;
   y: number;
-  /** Lado por el que entró el flooz a la casilla actual. */
+  /** Lado por el que entró el flujo a la casilla actual. */
   entry: Dir;
   /** Progreso 0..1 dentro de la casilla actual. */
   progress: number;

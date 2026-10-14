@@ -1,4 +1,4 @@
-// pipe-muse core — avance del flooz (lógica pura, paso fijo).
+// pipe-muse core — avance del flujo (lógica pura, paso fijo).
 // El líquido avanza casilla a casilla con llenado progresivo 0..1 dentro
 // de cada tubería. Derrama al llegar a borde, vacío o pieza que no conecta.
 import { CONFIG } from '../config';
@@ -144,7 +144,7 @@ function completeCell(b: Board, f: FlowState, events: FlowEvent[]): void {
   }
   const next = getCell(b, nx, ny);
   if (!next || next.obstacle || !next.piece || !connects(next.piece, needSide)) {
-    // El flooz intenta salir hacia (nx,ny): derrame en el borde de la actual.
+    // El flujo intenta salir hacia (nx,ny): derrame en el borde de la actual.
     spill(f, f.x, f.y, out, events);
     return;
   }

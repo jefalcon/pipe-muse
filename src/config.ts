@@ -30,7 +30,7 @@ export const CONFIG = {
     cross: 8,
   } as Record<string, number>,
 
-  // ---- Cuenta atrás inicial por nivel (segundos antes del flooz) ----
+  // ---- Cuenta atrás inicial por nivel (segundos antes del flujo) ----
   // TODO verificar contra original (todos los valores de ritmo)
   COUNTDOWN_BY_LEVEL: [12, 10, 9, 8, 7, 6, 5, 5, 4, 4, 3, 3, 2, 2, 1],
 

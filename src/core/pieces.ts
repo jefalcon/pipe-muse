@@ -41,7 +41,7 @@ export function connects(p: Piece, side: Dir): boolean {
 }
 
 /**
- * Dado el lado de ENTRADA del flooz a la pieza, devuelve el lado de SALIDA,
+ * Dado el lado de ENTRADA del flujo a la pieza, devuelve el lado de SALIDA,
  * o null si no conecta (derrame). Para 'start' no hay entrada: devuelve su salida.
  * Cruces: atraviesa recto (sale por el lado opuesto a la entrada).
  * Unidireccionales: solo permiten el sentido indicado; si se entra al revés → null.
@@ -61,7 +61,7 @@ export function exitDir(p: Piece, entry: Dir): Dir | null {
   // Cruce y depósito: recto.
   if (p.kind === 'cross' || p.kind === 'reservoir') return OPPOSITE[entry];
 
-  // Pieza final: el flooz termina aquí (sin salida) pero no derrama.
+  // Pieza final: el flujo termina aquí (sin salida) pero no derrama.
   if (p.kind === 'end') return null;
 
   // Rectas y codos: la otra boca.

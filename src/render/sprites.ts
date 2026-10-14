@@ -1,5 +1,5 @@
 // pipe-muse render — arte HD ORIGINAL procedural (Canvas 2D vectorial).
-// Tema industrial: acero + latón sobre fondo nocturno, flooz verde vivo.
+// Tema industrial: acero + latón sobre fondo nocturno, flujo verde vivo.
 // Las bases se prerenderizan a sprites offscreen (rápido); el llenado
 // parcial y efectos se dibujan en dinámico.
 import type { Dir, Piece } from '../core/types';
@@ -19,9 +19,9 @@ export const COLORS = {
   brassHi: '#ffe9a8',
   brass: '#d8a53c',
   brassDark: '#7c5a17',
-  floozHi: '#9df7c0',
-  flooz: '#2fd465',
-  floozDark: '#148040',
+  flujoHi: '#9df7c0',
+  flujo: '#2fd465',
+  flujoDark: '#148040',
   channel: '#1b2436',
   text: '#eef2f8',
   dim: '#93a0b8',
@@ -201,8 +201,8 @@ function paintCasing(g: CanvasRenderingContext2D, arms: Dir[]): void {
 function paintChannel(g: CanvasRenderingContext2D, arms: Dir[], filled: boolean): void {
   const passes: Array<[number, string]> = filled
     ? [
-        [CHAN + 3, COLORS.floozDark],
-        [CHAN, COLORS.flooz],
+        [CHAN + 3, COLORS.flujoDark],
+        [CHAN, COLORS.flujo],
         [CHAN - 8, '#46e87e'],
         [4, 'rgba(232,255,240,0.6)'],
       ]
@@ -347,8 +347,8 @@ function paintStart(g: CanvasRenderingContext2D, dir: Dir, filled: boolean): voi
   rad.addColorStop(1, COLORS.brassDark);
   dot(g, C, C, 23, '#3a2c0c');
   dot(g, C, C, 20, rad);
-  dot(g, C, C, 9, filled ? COLORS.flooz : '#241c08');
-  if (filled) dot(g, C - 2, C - 2, 4, COLORS.floozHi);
+  dot(g, C, C, 9, filled ? COLORS.flujo : '#241c08');
+  if (filled) dot(g, C - 2, C - 2, 4, COLORS.flujoHi);
   // Volante: 3 radios.
   g.strokeStyle = '#5c430f';
   g.lineWidth = 3;
@@ -369,7 +369,7 @@ function paintEnd(g: CanvasRenderingContext2D, dir: Dir, filled: boolean): void 
   paintFlange(g, dir);
   dot(g, C, C, 22, '#0c121e');
   dot(g, C, C, 19, '#2b3650');
-  g.fillStyle = filled ? COLORS.floozDark : '#0a0f1a';
+  g.fillStyle = filled ? COLORS.flujoDark : '#0a0f1a';
   for (let i = -1; i <= 1; i++) {
     g.save();
     g.translate(C, C);
@@ -396,7 +396,7 @@ function paintReservoir(g: CanvasRenderingContext2D, filled: boolean): void {
   g.roundRect(C - 6, C - 12, 12, 24, 6);
   g.fill();
   const lvl = filled ? 20 : 5;
-  g.fillStyle = filled ? COLORS.flooz : COLORS.floozDark;
+  g.fillStyle = filled ? COLORS.flujo : COLORS.flujoDark;
   g.beginPath();
   g.roundRect(C - 4, C + 10 - lvl, 8, lvl, 4);
   g.fill();
@@ -478,14 +478,14 @@ function armPoint(d: Dir, t: number): Pt {
   return { x: e.x + (CTR.x - e.x) * t, y: e.y + (CTR.y - e.y) * t };
 }
 
-function floozLine(g: CanvasRenderingContext2D, a: Pt, b: Pt): void {
-  strokeSeg(g, a, b, CHAN, COLORS.floozDark);
-  strokeSeg(g, a, b, CHAN - 7, COLORS.flooz);
+function flujoLine(g: CanvasRenderingContext2D, a: Pt, b: Pt): void {
+  strokeSeg(g, a, b, CHAN, COLORS.flujoDark);
+  strokeSeg(g, a, b, CHAN - 7, COLORS.flujo);
   strokeSeg(g, a, b, 5, 'rgba(230,255,238,0.75)');
 }
 
 /**
- * Dibuja base + flooz parcial (entrada→centro→salida) + burbujas animadas.
+ * Dibuja base + flujo parcial (entrada→centro→salida) + burbujas animadas.
  * (px,py) en coords. lógicas; timeMs para animación.
  */
 export function drawFilling(
@@ -504,23 +504,23 @@ export function drawFilling(
   if (p.kind === 'start') {
     const d = p.dir ?? 'right';
     const tip = armPoint(d, 1 - progress); // del centro hacia fuera
-    floozLine(ctx, CTR, tip);
-    dot(ctx, CTR.x, CTR.y, 9, COLORS.flooz);
-    dot(ctx, CTR.x - 2, CTR.y - 2, 4, COLORS.floozHi);
+    flujoLine(ctx, CTR, tip);
+    dot(ctx, CTR.x, CTR.y, 9, COLORS.flujo);
+    dot(ctx, CTR.x - 2, CTR.y - 2, 4, COLORS.flujoHi);
     ctx.restore();
     return;
   }
   const aLen = Math.min(1, progress * 2);
   const bLen = Math.max(0, progress * 2 - 1);
   // Tramo A: borde de entrada → centro.
-  floozLine(ctx, EDGE[entry], armPoint(entry, aLen));
+  flujoLine(ctx, EDGE[entry], armPoint(entry, aLen));
   // Tramo B: centro → salida.
   const exit = exitOf(p, entry);
   if (exit && bLen > 0) {
     const tip = armPoint(exit, 1 - bLen);
-    floozLine(ctx, CTR, tip);
+    flujoLine(ctx, CTR, tip);
   }
-  if (progress > 0.45) dot(ctx, CTR.x, CTR.y, CHAN / 2 - 3, COLORS.flooz);
+  if (progress > 0.45) dot(ctx, CTR.x, CTR.y, CHAN / 2 - 3, COLORS.flujo);
   if (p.kind === 'reservoir') {
     // Mirilla del depósito: nivel proporcional al progreso.
     ctx.fillStyle = '#101827';
@@ -528,7 +528,7 @@ export function drawFilling(
     ctx.roundRect(C - 6, C - 12, 12, 24, 6);
     ctx.fill();
     const lvl = 3 + 17 * progress;
-    ctx.fillStyle = COLORS.flooz;
+    ctx.fillStyle = COLORS.flujo;
     ctx.beginPath();
     ctx.roundRect(C - 4, C + 10 - lvl, 8, lvl, 4);
     ctx.fill();
