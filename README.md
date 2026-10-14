@@ -12,8 +12,8 @@
 
 ## Español
 
-Clon jugable de *Pipe Mania* para navegador, fiel en mecánicas, ritmo y
-puntuación al original de 1989, con estética HD propia.
+Juego para navegador inspirado en las mecánicas de Pipe Mania (1989);
+grafismo, sonido y código originales, con estética HD propia.
 
 ![game](screenshots/game.png)
 
@@ -55,8 +55,8 @@ configuración del juego (tiempos, velocidades, distancias, puntos) vive en
 
 ## English
 
-A playable *Pipe Mania* clone for the browser, faithful to the 1989 original
-in mechanics, pacing and scoring, with its own HD look.
+A browser game inspired by the mechanics of Pipe Mania (1989); original
+graphics, sound and code, with its own HD look.
 
 ### How to play
 
