@@ -1,15 +1,21 @@
 import { defineConfig } from 'vite';
-import { viteSingleFile } from 'vite-plugin-singlefile';
 
-// Build demo monofichero para el portfolio (jefalcon-web la descarga por tag).
-// Todo inlinado en demo/index.html; `npm run build` sigue generando dist/.
+// Build de la demo para el portfolio (jefalcon-web la descarga por tag).
+// Sin nada inline (CSP estricta: script-src/style-src 'self'): JS y CSS van
+// a demo/assets/ con nombres fijos, para que games.config.json pueda listarlos.
+// `npm run build` sigue generando dist/.
 export default defineConfig({
   base: './',
-  plugins: [viteSingleFile()],
   build: {
     outDir: 'demo',
     emptyOutDir: true,
-    assetsInlineLimit: 100 * 1024 * 1024,
-    chunkSizeWarningLimit: 1024,
+    modulePreload: { polyfill: false },
+    rollupOptions: {
+      output: {
+        entryFileNames: 'assets/pipe-muse.js',
+        chunkFileNames: 'assets/[name].js',
+        assetFileNames: 'assets/[name][extname]',
+      },
+    },
   },
 });

@@ -5,6 +5,7 @@ import { attachInput } from './input/input';
 import { render } from './render/renderer';
 import { AudioMan } from './audio/audio';
 import { getLang } from './i18n';
+import './style.css';
 
 const canvas = document.getElementById('game') as HTMLCanvasElement;
 const hint = document.getElementById('hint') as HTMLDivElement;

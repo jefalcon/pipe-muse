@@ -43,7 +43,7 @@ npm install
 npm run dev        # desarrollo → http://127.0.0.1:5173/
 npm test           # tests unitarios (Vitest)
 npm run build      # sitio estático en dist/ (listo para GitHub Pages)
-npm run build:demo # demo monofichero en demo/ (la usa el portfolio)
+npm run build:demo # demo en demo/ (index.html + assets/, sin inline; la usa el portfolio)
 npm run preview    # sirve dist/ en local
 ```
 

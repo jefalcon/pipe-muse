@@ -1,0 +1,25 @@
+/* Página del juego (antes inline en index.html: CSP estricta sin 'unsafe-inline'). */
+html, body {
+  margin: 0; padding: 0; height: 100%;
+  background: radial-gradient(120% 120% at 50% 20%, #16233a 0%, #070c15 70%);
+  color: #e8e8e8;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
+#wrap {
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+#stage { position: relative; }
+canvas {
+  display: block;
+  background: #101623;
+  border-radius: 6px;
+  box-shadow: 0 0 0 2px #000, 0 0 0 4px #2c3a55, 0 18px 60px rgba(0,0,0,.7);
+}
+#hint {
+  position: absolute; left: 0; right: 0; bottom: -24px;
+  text-align: center; font-size: 12px; color: #8a93a6;
+  user-select: none; white-space: nowrap;
+}
